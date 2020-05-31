@@ -126,6 +126,14 @@
   (ivy-rich-mode +1)
   t)
 
+(use-package-hook! multiple-cursors
+  :post-config
+  (global-set-key (kbd "C->") #'mc/mark-next-like-this)
+  (global-set-key (kbd"C-<") #'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C->") #'mc/mark-all-like-this)
+  (global-set-key (kbd "C-c (") #'mc/mark-all-in-region)
+  t)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
