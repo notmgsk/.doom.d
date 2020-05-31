@@ -91,8 +91,11 @@
 (use-package-hook! ivy-posframe
   :pre-config
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))
-        ivy-posframe-height-alist '((t . 30))
-        ivy-posframe-width 120
+        ivy-posframe-height-alist '((t . 40))
+        ivy-posframe-width 130
+        ivy-posframe-min-width 130
+        ivy-posframe-height 40
+        ivy-posframe-min-height 40
         ivy-posframe-parameters nil
         ivy-posframe-border-width 10)
   ;; NOTE This NIL is important: it overrides doom's config.
