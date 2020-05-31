@@ -41,6 +41,16 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; TODO I think there is some Doom-specific tooling for determining the current
+;; OS. Use that instead.
+;;
+;; macOS-specific configurations. This sets the cmd key to another alt (meta)
+;; key.
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (global-set-key (kbd "M-`") 'ns-next-frame)
+  (global-set-key (kbd "M-h") 'ns-do-hide-emacs))
+
 (use-package! key-chord
   :demand t
   :init
