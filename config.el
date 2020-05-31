@@ -31,6 +31,12 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; (defun counsel-find-org ()
+;;   (interactive)
+;;   (let ((default-directory org-directory))
+;;     (counsel-git)))
+;; TODO Set up a keymap for find-file related stuff and add chords for them.
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
