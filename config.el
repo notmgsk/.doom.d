@@ -31,10 +31,10 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; (defun counsel-find-org ()
-;;   (interactive)
-;;   (let ((default-directory org-directory))
-;;     (counsel-git)))
+(defun counsel-find-org ()
+  (interactive)
+  (let ((default-directory org-directory))
+    (counsel-git)))
 ;; TODO Set up a keymap for find-file related stuff and add chords for them.
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -83,11 +83,6 @@
   (setq key-chord-two-keys-delay 0.05)
   (key-chord-mode +1))
 
-(use-package-hook! ace-window
-  :pre-config
-  (key-chord-define-global "jw" #'ace-window)
-  t)
-
 (use-package simple
   :config
   (key-chord-define-global "df" #'undo)
@@ -110,6 +105,32 @@
         ivy-posframe-border-width 10)
   ;; NOTE This NIL is important: it overrides doom's config.
   nil)
+
+(use-package ace-window
+  :init
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+        aw-scope 'frame)
+  (key-chord-define-global "jw" #'ace-window)
+  (key-chord-define-global "kw" #'ace-delete-window))
+
+
+(use-package ace-window-posframe
+  :after ace-window
+  :config
+  (defun pretty-aw-posframe-show (str)
+    (list :string str
+          :poshandler aw-posframe-position-handler
+          :font (face-font 'aw-leading-char-face)
+          :foreground-color (face-foreground 'aw-leading-char-face)
+          :background-color (face-background 'aw-leading-char-face)
+          :internal-border-width 10
+          :internal-border-color "magenta"))
+  (setq ace-window-posframe-show-fn #'pretty-aw-posframe-show)
+  (custom-set-faces '(aw-background-face ((t nil)))
+                    '(aw-leading-char-face
+                      ((t (:foreground "magenta" :box
+                           (:line-width 2 :color "magenta" :style released-button) :height 4.0)))))
+  (ace-window-posframe-mode +1))
 
 (use-package-hook! ivy-rich
   :post-config
