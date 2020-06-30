@@ -175,6 +175,11 @@
   t
   :post-config
   (global-undo-tree-mode))
+
+(use-package-hook! sly
+  :post-config
+  (define-key sly-mrepl-mode-map (kbd "C-c C-z") 'switch-to-prev-buffer))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
