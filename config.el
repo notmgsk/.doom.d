@@ -41,6 +41,10 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; Enable line wrapping globally. I think these need to be configured together.
+(setq-default truncate-lines t)
+(global-visual-line-mode 1)
+
 ;; TODO I think there is some Doom-specific tooling for determining the current
 ;; OS. Use that instead.
 ;;
