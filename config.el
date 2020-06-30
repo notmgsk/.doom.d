@@ -169,6 +169,12 @@
   (global-set-key (kbd "C-c (") #'mc/mark-all-in-region)
   t)
 
+(use-package-hook! undo
+  :post-init
+  (add-to-dk-keymap '(("u" . undo-tree-visualize)))
+  t
+  :post-config
+  (global-undo-tree-mode))
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
